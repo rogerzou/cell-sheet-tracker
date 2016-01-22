@@ -5,7 +5,7 @@ cell-sheet-tracker
 
 This source code accompanies the paper below. Please cite if you use our code for your research. All code is written in the MATLAB and Java programming languages.
 
-Zou R.S. and Tomasi, C. (under review). Deformable Graph Model for Tracking Epithelial Cell Sheets in Fluorescence Microscopy. *Medical Imaging, IEEE Transactions on*
+R.S. Zou and C. Tomasi. Deformable Graph Model for Tracking Epithelial Cell Sheets in Fluorescence Microscopy. *IEEE Transactions on Medical Imaging*, pages TBA, January 2016.
 
 ### Software requirements
 - MATLAB R2015b (wth Image Processing and Statistics Toolboxes)
@@ -18,4 +18,4 @@ Zou R.S. and Tomasi, C. (under review). Deformable Graph Model for Tracking Epit
 3. In MATLAB, run `setup`.
 
 ### Demonstrations
-The script `RUNME` demonstrates our algorithm for a subset of the DDC1 data set. If you decide to not use SIFT flow, change the `siftflow` flag in line 26 of `README` to `false`.
+The script `RUNME` demonstrates our algorithm for a subset of the DDC1 data set. If you decide to not use SIFT flow, change the `siftflow` flag in line 26 of `RUNME` to `false`.
