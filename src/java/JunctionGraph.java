@@ -163,7 +163,7 @@ public class JunctionGraph {
             ArrayList<Edge> listE = c.getEList();
             Iterator<Vertex> vIt = listV.iterator();
             Iterator<Edge> eIt = listE.iterator();
-            ArrayList<int[]> faceListi = new ArrayList<>();
+            ArrayList<int[]> faceListi = new ArrayList<int[]>();
             while (vIt.hasNext()) {
                 int vKey = indexV.get(vIt.next());
                 LinkedList<Integer> eKeys = indexE.get(eIt.next());
