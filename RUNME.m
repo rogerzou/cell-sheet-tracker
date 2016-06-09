@@ -12,6 +12,28 @@ GT = GT(yrange, xrange);
 GT = padarray(GT, [20,20]);                       % zero padding to avoid crashing due to sampling outside image
 ALL = padarray(ALL, [20,20,0]);
 
+%% obtain processed images (smoothed and segmentations)
+
+N = size(ALL,3);                    % number of images
+
+% gaussian smoothed images in ALL_s
+H = fspecial('gaussian', 5, 2);
+ALL_s = ALL;                                                                % ALL_s holds the smoothed image stack
+for ii=1:N
+    ALL_s(:,:,ii) = imfilter(ALL(:,:,ii), H);                               % filter each image frame
+end
+
+% watershed segmentations of all image frames in SEG
+hminima = 25;                                                               % the h parameter for matlab's imhmin function optimized to this data set
+SEG = false(size(ALL));                                                     % SEG holds the segmentations of image stack
+for ii=1:N
+    L = watershed( imhmin(medfilt2(ALL(:,:,ii),[3,3]), hminima) );          % watershed segmentation on each frame (after light median filtering for noise removal)
+    SEG(:,:,ii) = imreadgroundtruth(L==0, true);                            % convert segmentation to ground truth format
+end
+
+% NOTE: to use a segmented first frame rather than the default ground truth, uncomment the following line:
+% GT = SEG(:,:,1);
+
 %% optimization
 
 % algorithm parameters
